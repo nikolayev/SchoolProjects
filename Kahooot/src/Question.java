@@ -11,4 +11,14 @@ public class Question {
         this.difficulty = difficulty;
         this.answers = answers;
     }
+
+    public int getCorrectAnswerIndex(){
+        for(int i=0;i<answers.size();i++){
+            Answer checkedAnswer = answers.get(i);
+            if(checkedAnswer.isCorrect()){
+                return i;
+            }
+        }
+        return -1;
+    }
 }

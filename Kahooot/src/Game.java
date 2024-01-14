@@ -11,8 +11,9 @@ public class Game {
         questionIndex++;
         return gameQuestions.get(questionIndex);
     }
-
-    public void checkAnswer(int answerIndex){
+    public boolean checkAnswer(int answerIndex){
         Question currentQuestion = gameQuestions.get(questionIndex);
+        int correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
+        return correctAnswerIndex == answerIndex;
     }
 }

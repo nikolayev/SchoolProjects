@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class QuestionDatabase {
     public ArrayList<Question> getQuestions(){
         ArrayList<Question> questions = new ArrayList<Question>();
-        String questionText1 = "";
+        String questionText1 = "Best Letter?";
         ArrayList<Answer> answers1 = new ArrayList<Answer>();
             String answerText11 = "A";
             Answer answer11 = new Answer(answerText11, false);

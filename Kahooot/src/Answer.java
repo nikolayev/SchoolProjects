@@ -1,6 +1,6 @@
 public class Answer {
-    private String text;
-    private boolean correct;
+    private final String text;
+    private final boolean correct;
 
     public Answer(String text, boolean correct){
         this.text = text;
@@ -9,5 +9,9 @@ public class Answer {
 
     public boolean isCorrect(){
         return correct;
+    }
+
+    public String getText() {
+        return text;
     }
 }

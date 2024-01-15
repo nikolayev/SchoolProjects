@@ -25,4 +25,12 @@ public class Question {
     public int getDifficulty(){
         return difficulty;
     }
+
+    public String getText() {
+        return text;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
 }

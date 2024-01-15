@@ -1,24 +1,14 @@
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-//        GUI gui = new GUI();
-//        gui.display();
+        QuestionDatabase database = new QuestionDatabase();
+        List<Question> questions = database.getQuestions();
 
-        QuestionDatabase questionDatabase = new QuestionDatabase();
-        ArrayList<Question> questions = questionDatabase.getQuestions();
-        Game game = new Game(questions);
-
-        Question currentQuestion;
-
-        while(game.hasMoreQuestions()){
-            currentQuestion = game.getNextQuestion();
-            boolean checkedAnswer = game.checkAnswer(1);
-            int score = game.getScore();
-        }
-        int finalScore = game.getScore();
-        System.out.println(finalScore);
+        SwingUtilities.invokeLater(() -> {
+            MainScreen gui = new MainScreen(questions);
+            gui.display();
+        });
     }
 }

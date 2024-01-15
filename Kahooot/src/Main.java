@@ -13,22 +13,12 @@ public class Main {
 
         Question currentQuestion;
 
-        currentQuestion = game.getNextQuestion();
-        boolean checkedAnswer = game.checkAnswer(0);
-        int score = game.getScore();
-
-        currentQuestion = game.getNextQuestion();
-        checkedAnswer = game.checkAnswer(2);
-        score = game.getScore();
-
-        currentQuestion = game.getNextQuestion();
-        checkedAnswer = game.checkAnswer(2);
-        score = game.getScore();
-
-        currentQuestion = game.getNextQuestion();
-        checkedAnswer = game.checkAnswer(3);
-        score = game.getScore();
-
-
+        while(game.hasMoreQuestions()){
+            currentQuestion = game.getNextQuestion();
+            boolean checkedAnswer = game.checkAnswer(1);
+            int score = game.getScore();
+        }
+        int finalScore = game.getScore();
+        System.out.println(finalScore);
     }
 }

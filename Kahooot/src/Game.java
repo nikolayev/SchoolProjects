@@ -35,4 +35,11 @@ public class Game {
         return totalScore;
     }
 
+    public boolean hasMoreQuestions(){
+        if(questionIndex < gameQuestions.size() - 1){
+            return true;
+        }
+        return false;
+    }
+
 }

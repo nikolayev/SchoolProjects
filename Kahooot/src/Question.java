@@ -21,4 +21,8 @@ public class Question {
         }
         return -1;
     }
+
+    public int getDifficulty(){
+        return difficulty;
+    }
 }

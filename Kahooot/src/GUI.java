@@ -9,7 +9,6 @@ public class GUI extends JFrame {
                 setMinimumSize(new Dimension(width, height));
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
                 // center the JLabel
                 JLabel lblText = new JLabel("KAHOOOT", SwingConstants.CENTER);
 

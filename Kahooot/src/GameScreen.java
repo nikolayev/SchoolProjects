@@ -42,7 +42,8 @@ public class GameScreen extends JFrame {
         int answerIndex = buttonList.indexOf(button);
 
         CheckedAnswer result = game.checkAnswer(answerIndex);
-        JOptionPane.showMessageDialog(this, String.format("The answer %s!", result.isCorrect() ? "correct" : "incorrect"));
+        String popUp = String.format("The answer is %s", result.isCorrect() ? "correct" : "incorrect, the correct answer was '" + result.getCorrectAnswer().getText()) + "'";
+        JOptionPane.showMessageDialog(this, popUp);
         setScore();
         if (game.hasMoreQuestions()) {
             Question nextQuestion = game.getNextQuestion();

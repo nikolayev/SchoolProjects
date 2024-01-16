@@ -50,10 +50,7 @@ public class Game {
     }
 
     public boolean hasMoreQuestions() {
-        if (questionIndex < gameQuestions.size() - 1) {
-            return true;
-        }
-        return false;
+        return questionIndex < gameQuestions.size() - 1;
     }
 
     public int getQuestionCount() {

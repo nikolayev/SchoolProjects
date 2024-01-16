@@ -1,14 +1,14 @@
 public class CheckedAnswer {
-    private final Answer checkedAnswer;
+    private final Answer correctAnswer;
     private final boolean isCorrect;
 
-    public CheckedAnswer(Answer checkedAnswer, boolean isCorrect) {
-        this.checkedAnswer = checkedAnswer;
+    public CheckedAnswer(Answer correctAnswer, boolean isCorrect) {
+        this.correctAnswer = correctAnswer;
         this.isCorrect = isCorrect;
     }
 
-    public Answer getCheckedAnswer() {
-        return checkedAnswer;
+    public Answer getCorrectAnswer() {
+        return correctAnswer;
     }
 
     public boolean isCorrect() {

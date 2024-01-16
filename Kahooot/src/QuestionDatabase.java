@@ -40,12 +40,12 @@ public class QuestionDatabase {
                 new Answer("implements", false),
                 new Answer("extends", true),
                 new Answer("this", false))),
-            new Question("Which data type represents 'no value'?", 1, List.of(
+            new Question("Which data type represents 'no value'?", 2, List.of(
                 new Answer("void", true),
                 new Answer("none", false),
                 new Answer("empty", false),
                 new Answer("nada", false))),
-            new Question("1+1", 1, List.of(
+            new Question("1+1", 3, List.of(
                 new Answer("1", false),
                 new Answer("3", false),
                 new Answer("11", false),

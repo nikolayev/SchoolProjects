@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameScreen extends JFrame {
+    private final Color[] colorPalette = {Color.red, Color.cyan, Color.yellow, Color.green, Color.orange, Color.pink, Color.blue, Color.white, Color.magenta};
     private final Game game;
     private final JLabel scoreLabel;
     private final JLabel questionLabel;
@@ -20,15 +21,29 @@ public class GameScreen extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panel.add(Box.createVerticalGlue());
 
         questionLabel = new JLabel();
+        questionLabel.setFont(new Font("Serif", Font.PLAIN, 24));
+        questionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(questionLabel);
 
+        panel.add(Box.createHorizontalStrut(20));
+
         buttonsPanel = new JPanel();
+        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(buttonsPanel);
 
+        panel.add(Box.createHorizontalStrut(20));
+
         scoreLabel = new JLabel();
+        scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(scoreLabel);
+
+        panel.add(Box.createVerticalGlue());
 
         add(panel);
 
@@ -62,9 +77,17 @@ public class GameScreen extends JFrame {
         List<Answer> answers = question.getAnswers();
         buttonsPanel.removeAll();
         buttonList.clear();
-        for (Answer answer : answers) {
+
+        int columns = answers.size() == 3 ? 3 : 2;
+        int rows = answers.size() / columns;
+        buttonsPanel.setLayout(new GridLayout(rows, columns));
+
+        for (int i = 0; i < answers.size(); i++) {
+            Answer answer = answers.get(i);
             JButton button = new JButton(answer.getText());
             button.addActionListener(this::answerButtonClicked);
+            button.setFont(new Font("Serif", Font.PLAIN, 18));
+            button.setBackground(colorPalette[i]);
             buttonsPanel.add(button);
             buttonList.add(button);
         }

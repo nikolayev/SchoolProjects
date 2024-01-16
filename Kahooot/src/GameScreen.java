@@ -37,20 +37,22 @@ public class GameScreen extends JFrame {
         setScore();
     }
 
-    public void answerButtonClicked(ActionEvent e)
-    {
+    public void answerButtonClicked(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         int answerIndex = buttonList.indexOf(button);
 
-        boolean isCorrect = game.checkAnswer(answerIndex);
-        JOptionPane.showMessageDialog(this, String.format("The answer %s!", isCorrect ? "correct" : "incorrect"));
+        CheckedAnswer result = game.checkAnswer(answerIndex);
+        JOptionPane.showMessageDialog(this, String.format("The answer %s!", result.isCorrect() ? "correct" : "incorrect"));
         setScore();
-        if(game.hasMoreQuestions()){
+        if (game.hasMoreQuestions()) {
             Question nextQuestion = game.getNextQuestion();
             setQuestion(nextQuestion);
         } else {
             buttonsPanel.removeAll();
-            questionLabel.setText("Game Over");
+            int correctCount = game.getCorrectCount();
+            int incorrectCount = game.getQuestionCount() - correctCount;
+            String message = String.format("Game Over. Correct: %d, Incorrect: %d", correctCount, incorrectCount);
+            questionLabel.setText(message);
         }
     }
 
@@ -59,7 +61,7 @@ public class GameScreen extends JFrame {
         List<Answer> answers = question.getAnswers();
         buttonsPanel.removeAll();
         buttonList.clear();
-        for(Answer answer : answers){
+        for (Answer answer : answers) {
             JButton button = new JButton(answer.getText());
             button.addActionListener(this::answerButtonClicked);
             buttonsPanel.add(button);
@@ -69,6 +71,7 @@ public class GameScreen extends JFrame {
 
     private void setScore() {
         int score = game.getScore();
-        scoreLabel.setText(Integer.toString(score));
+        String text = String.format("Score: %d", score);
+        scoreLabel.setText(text);
     }
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+
 public class Game {
     private final List<Question> gameQuestions;
     private final List<UserAnswer> userAnswers = new ArrayList<>();
@@ -9,37 +10,53 @@ public class Game {
         this.gameQuestions = questions;
     }
 
-    public Question getNextQuestion(){
+    public Question getNextQuestion() {
         questionIndex++;
         return gameQuestions.get(questionIndex);
     }
-    public boolean checkAnswer(int answerIndex){
+
+    public CheckedAnswer checkAnswer(int answerIndex) {
         Question currentQuestion = gameQuestions.get(questionIndex);
         int correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
         boolean isCorrect = correctAnswerIndex == answerIndex;
         UserAnswer useranswer = new UserAnswer(currentQuestion, isCorrect);
         userAnswers.add(useranswer);
-        return correctAnswerIndex == answerIndex;
+        Answer correctAnswer = currentQuestion.getAnswers().get(correctAnswerIndex);
+        return new CheckedAnswer(correctAnswer, isCorrect);
     }
 
-    public int getScore(){
+    public int getScore() {
         int totalScore = 0;
-        for(int i=0;i<userAnswers.size();i++){
+        for (int i = 0; i < userAnswers.size(); i++) {
             UserAnswer userAnswer = userAnswers.get(i);
             int difficulty = userAnswer.getQuestion().getDifficulty();
             boolean correct = userAnswer.getCorrectUserAnswer();
-            if(correct){
-                totalScore += 100*difficulty;
+            if (correct) {
+                totalScore += 100 * difficulty;
             }
         }
         return totalScore;
     }
 
-    public boolean hasMoreQuestions(){
-        if(questionIndex < gameQuestions.size() - 1){
+    public int getCorrectCount() {
+        int correctCount = 0;
+        for (UserAnswer userAnswer : userAnswers) {
+            boolean correct = userAnswer.getCorrectUserAnswer();
+            if (correct) {
+                correctCount++;
+            }
+        }
+        return correctCount;
+    }
+
+    public boolean hasMoreQuestions() {
+        if (questionIndex < gameQuestions.size() - 1) {
             return true;
         }
         return false;
     }
 
+    public int getQuestionCount() {
+        return gameQuestions.size();
+    }
 }

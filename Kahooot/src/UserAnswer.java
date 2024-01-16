@@ -1,18 +1,17 @@
 public class UserAnswer {
-    private Question question;
-    private boolean correct;
+    private final Question question;
+    private final boolean correct;
 
-    public UserAnswer(Question question, boolean correct){
+    public UserAnswer(Question question, boolean correct) {
         this.question = question;
         this.correct = correct;
     }
 
-    public Question getQuestion(){
+    public Question getQuestion() {
         return question;
     }
 
-    public boolean getCorrectUserAnswer(){
+    public boolean getCorrectUserAnswer() {
         return correct;
     }
-
 }

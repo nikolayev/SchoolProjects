@@ -1,28 +1,27 @@
 import java.util.List;
-import java.util.ArrayList;
 
 public class Question {
-    private String text;
-    private int difficulty;
-    private List<Answer> answers = new ArrayList<>();
+    private final String text;
+    private final int difficulty;
+    private final List<Answer> answers;
 
-    public Question(String text, int difficulty, List<Answer> answers){
+    public Question(String text, int difficulty, List<Answer> answers) {
         this.text = text;
         this.difficulty = difficulty;
         this.answers = answers;
     }
 
-    public int getCorrectAnswerIndex(){
-        for(int i=0;i<answers.size();i++){
+    public int getCorrectAnswerIndex() {
+        for (int i = 0; i < answers.size(); i++) {
             Answer checkedAnswer = answers.get(i);
-            if(checkedAnswer.isCorrect()){
+            if (checkedAnswer.isCorrect()) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int getDifficulty(){
+    public int getDifficulty() {
         return difficulty;
     }
 

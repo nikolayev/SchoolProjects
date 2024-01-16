@@ -6,11 +6,12 @@ import java.awt.event.ActionEvent;
 //This is the UI for the title screen
 //Can begin the game from here
 //This class extends JFrame which represents a window in Java Swing
+//Alexander Nikolayev 01/16/2024
 public class MainScreen extends JFrame {
 
     private final List<Question> questions;
 
-    //Constructor
+    //Constructor (R.2.1)
     public MainScreen(List<Question> questions) {
         super("KAHOOT");
         this.questions = questions;
@@ -50,7 +51,7 @@ public class MainScreen extends JFrame {
         this.add(panel);
     }
 
-    //Mutator, makes the window visible
+    //Mutator, makes the window visible (R.2.3 - void method)
     public void display() {
         setVisible(true);
     }

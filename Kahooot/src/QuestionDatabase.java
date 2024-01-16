@@ -2,8 +2,10 @@ import java.util.List;
 
 //Stores question information separate from the application logic
 //Sample questions, in the future can be replaced with a file or a real database
+//Alexander Nikolayev 01/16/2024
 public class QuestionDatabase {
     public List<Question> getQuestions() {
+        // GetQuestions method returns a list of questions (R.2.3 - Non-void method)
         //This is a list of questions, each containing a list of possible answers (Don't cheat)
         List<Question> questions = List.of(
             new Question("Which Java type represents whole numbers?", 1, List.of(

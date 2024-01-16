@@ -6,15 +6,18 @@ import java.util.List;
 
 //This is the UI for the specific instance of game
 //It also extends JFrame which represents a window in Java Swing
+//Alexander Nikolayev 01/16/2024
 public class GameScreen extends JFrame {
-    private final Color[] colorPalette = {Color.red, Color.cyan, Color.yellow, Color.green, Color.orange, Color.pink, Color.blue, Color.white, Color.magenta};
+
+    //List of possible colors of buttons
+    private final Color[] colorPalette = {Color.red, Color.cyan, Color.yellow, Color.green};
     private final Game game;
     private final JLabel scoreLabel;
     private final JLabel questionLabel;
     private final JPanel buttonsPanel;
     private final List<JButton> buttonList = new ArrayList<>();
 
-    //Constructor
+    // Constructor (R.2.1)
     public GameScreen(Game game) {
         super("New Game");
         this.game = game;
@@ -60,18 +63,23 @@ public class GameScreen extends JFrame {
         add(panel);
 
         //This advances to the first question then updates the UI with the question text and possible answers
+        // UI setup code...
+        // R.2.4 - Utilizing Swing (a Java GUI library) methods
         Question question = game.getNextQuestion();
         setQuestion(question);
         setScore();
     }
 
-    //Button click listener for the answer buttons
+    //Button click listener for the answer buttons (R.2.3 - void method with parameters)
     public void answerButtonClicked(ActionEvent e) {
         //Determine answer index based on which button was clicked
         JButton button = (JButton) e.getSource();
         int answerIndex = buttonList.indexOf(button);
 
         //Check if the answer is correct
+        // UI updates...
+        // R.3 - Decision-making (if-else)
+        // R.4 - Iteration (updating UI elements)
         CheckedAnswer result = game.checkAnswer(answerIndex);
 
         //Show the results
@@ -121,7 +129,8 @@ public class GameScreen extends JFrame {
             button.setFont(new Font("Serif", Font.PLAIN, 18));
 
             //Get the background color from predefined color palette based on the button index
-            button.setBackground(colorPalette[i]);
+            //When all the colors are used up, then wrap back to the beginning.
+            button.setBackground(colorPalette[i % colorPalette.length]);
             buttonsPanel.add(button);
             buttonList.add(button);
         }

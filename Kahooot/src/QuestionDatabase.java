@@ -1,7 +1,10 @@
 import java.util.List;
 
+//Stores question information separate from the application logic
+//Sample questions, in the future can be replaced with a file or a real database
 public class QuestionDatabase {
     public List<Question> getQuestions() {
+        //This is a list of questions, each containing a list of possible answers (Don't cheat)
         List<Question> questions = List.of(
             new Question("Which Java type represents whole numbers?", 1, List.of(
                 new Answer("String", false),

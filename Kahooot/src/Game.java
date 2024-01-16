@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//This is a custom type that contains main game logic
 public class Game {
     private final List<Question> gameQuestions;
     private final List<UserAnswer> userAnswers = new ArrayList<>();
@@ -10,11 +11,15 @@ public class Game {
         this.gameQuestions = questions;
     }
 
+    //This is an accessor and mutator
+    //Advances the game to the next question
     public Question getNextQuestion() {
         questionIndex++;
         return gameQuestions.get(questionIndex);
     }
 
+    //CheckAnswer checks if the user answer is correct, and stores that information,
+    // and returns information about the correctness of the result
     public CheckedAnswer checkAnswer(int answerIndex) {
         Question currentQuestion = gameQuestions.get(questionIndex);
         int correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
@@ -25,6 +30,9 @@ public class Game {
         return new CheckedAnswer(correctAnswer, isCorrect);
     }
 
+    //Accessor
+    //Calculates the current score of the game, giving previously provided answer
+    //Always recalculates
     public int getScore() {
         int totalScore = 0;
         for (int i = 0; i < userAnswers.size(); i++) {
@@ -38,6 +46,8 @@ public class Game {
         return totalScore;
     }
 
+    //Accessor
+    //Calculates the number of correct answers by the player
     public int getCorrectCount() {
         int correctCount = 0;
         for (UserAnswer userAnswer : userAnswers) {
@@ -49,10 +59,14 @@ public class Game {
         return correctCount;
     }
 
+    //Accessor
+    //Checks if there are more questions left in the game
+    //Implemented to provide a stopping condition for the game
     public boolean hasMoreQuestions() {
         return questionIndex < gameQuestions.size() - 1;
     }
 
+    //Accessor
     public int getQuestionCount() {
         return gameQuestions.size();
     }

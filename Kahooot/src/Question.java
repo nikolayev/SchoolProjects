@@ -18,6 +18,8 @@ public class Question {
 
     //Accessor (R.2.2)
     //Calculates the index of the correct answer in the list of all possible answers
+    //Pre-condition: You must have possible answers, and one of them must be correct
+    //Post-condition: Accessor / none
     public int getCorrectAnswerIndex() {
         for (int i = 0; i < answers.size(); i++) {
             Answer checkedAnswer = answers.get(i);

@@ -52,11 +52,15 @@ public class MainScreen extends JFrame {
     }
 
     //Mutator, makes the window visible (R.2.3 - void method)
+    //Pre-condition: Can be called at any time
+    //Post-condition: Makes the screen visible
     public void display() {
         setVisible(true);
     }
 
     //Button click listener that creates the game object and creates the game window
+    //Pre-condition: The window is visible and the start button is clicked
+    //Post-condition: Creates new game and the new game window is visible
     public void startButtonClicked(ActionEvent e) {
         Game game = new Game(questions);
         GameScreen gameScreen = new GameScreen(game);

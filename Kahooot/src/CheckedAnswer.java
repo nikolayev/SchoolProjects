@@ -1,5 +1,6 @@
 //Custom class that represents the result of checking the user's answer for correctness
 //It combines the correct answer with the information whether the user's answer was correct or not to display on UI.
+//Alexander Nikolayev 01/16/2024
 public class CheckedAnswer {
 
     // Using final primitive and object data types (R.1)
@@ -7,7 +8,6 @@ public class CheckedAnswer {
     private final boolean isCorrect;
 
     // Constructor initializing the fields (R.2.1)
-    //Alexander Nikolayev 01/16/2024
     public CheckedAnswer(Answer correctAnswer, boolean isCorrect) {
         this.correctAnswer = correctAnswer;
         this.isCorrect = isCorrect;

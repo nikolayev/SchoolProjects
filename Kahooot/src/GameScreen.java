@@ -71,6 +71,10 @@ public class GameScreen extends JFrame {
     }
 
     //Button click listener for the answer buttons (R.2.3 - void method with parameters)
+    //It checks whether the answer is correct or not, it shows the reslt as a message box,
+    // advances to the next question, and updates the screen for the next question
+    //Pre-condition: The game is on and there is a current question selected and an answer button is clicked
+    //Post-condition: The screen gets updated for the next question
     public void answerButtonClicked(ActionEvent e) {
         //Determine answer index based on which button was clicked
         JButton button = (JButton) e.getSource();
@@ -105,6 +109,8 @@ public class GameScreen extends JFrame {
     }
 
     //Update the UI for a specific question
+    //Pre-condition: Can be called at any time
+    //Post-condition: The screen is updated for the given question
     public void setQuestion(Question question) {
         //Set the question text
         this.questionLabel.setText(question.getText());

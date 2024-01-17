@@ -18,14 +18,18 @@ public class Game {
     //This is an accessor and mutator
     //Advances the game to the next-question
     // Next question logic (R.2.2, R.3 - Decision-making)
+    //Pre-condition: You must not be at the last question
+    //Post-condition: It updates the internal index to advance to the next question
     public Question getNextQuestion() {
         questionIndex++;
         return gameQuestions.get(questionIndex);
     }
 
-    //CheckAnswer checks if the user answer is correct, and stores that information,
+    //CheckAnswer checks if the user answer is correct, and stores that information
+    //Pre-condition: That you have at least advanced to the first question, and you haven't yet checked the result of the current question
+    //Post-condition: The method stores an object in the internal list, it is expected that this method is only called once per question
     // and returns information about the correctness of the result
-    // Checking the answer (R.2.3 - Non-void method, R.3)
+    // Checking the answer / mutator (R.2.3 - Non-void method, R.3)
     public CheckedAnswer checkAnswer(int answerIndex) {
         Question currentQuestion = gameQuestions.get(questionIndex);
         int correctAnswerIndex = currentQuestion.getCorrectAnswerIndex();
@@ -37,9 +41,10 @@ public class Game {
     }
 
     //Accessor
-    //Calculates the current score of the game, giving previously provided answer
-    //Always recalculates
     // Calculate score (R.2.3 - Non-void method with parameters)
+    //Math method (2.2.4)
+    //Pre-condition: Could call at any time
+    //Post-condition: This method always recalculates based on previous user answers
     public int getScore() {
         int totalScore = 0;
         for (int i = 0; i < userAnswers.size(); i++) {
@@ -55,6 +60,7 @@ public class Game {
 
     // Other accessor methods
     //Calculates the number of correct answers by the player
+    //Accessor
     public int getCorrectCount() {
         int correctCount = 0;
         for (UserAnswer userAnswer : userAnswers) {
